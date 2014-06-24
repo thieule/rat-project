@@ -182,7 +182,7 @@
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
                                          <ul class="dropdown-menu">
                                             <li><a href="#">Print</a></li>
-                                            <li><a href="#">Save as PDF</a></li>
+                                            <li><a ng-click="ngGridPdfExportPlugin(gridOptions);">Save as PDF</a></li>
                                             <li><a href="#">Export to Excel</a></li>
                                          </ul>
                                       </div>
@@ -215,6 +215,7 @@
                         </div>
                         <!-- /block -->
                     </div>
+                    <div style=" border: 1px solid rgb(212,212,212);  width: 971px;    height: 500px;" ng-grid="gridOptions"></div>
                 </div>
             </div>
             <hr>

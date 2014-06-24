@@ -131,5 +131,21 @@ ratApp.controller('userController',
             );
 
         };
+        
+     $scope.gridOptions = {
+        data: 'employers',
+        enablePinning: true,
+        columnDefs: [{ field: "full_name", width: 120 , pinned: true },
+                    { field: "code", width: 120},
+                    { field: "birthday", width: 120 },
+                    { field: "status", width: 120 },
+                    { field: "personal_email" },
+                    { field: "address",width:200,title:"Address" },
+                    { field: "gender", width: 120 }],
+         plugins: [new ngGridCsvExportPlugin()],
+        // plugins: [new ngGridPdfExportPlugin()],
+         showFooter: true
+    };
+    
         $scope.initData();
 });

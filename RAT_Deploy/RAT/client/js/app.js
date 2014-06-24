@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 var ratApp = angular.module('ratApp', [
 	'ngRoute',
+        'ngGrid',
 	'ratApp.userModule'
 ]);
 ratApp.config(['$routeProvider', function($routeProvider) {
