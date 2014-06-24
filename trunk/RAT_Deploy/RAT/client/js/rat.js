@@ -8,11 +8,11 @@ var rat = {};
 
 // Global settings
 rat.global = {
-	baseAddress: 'http://localhost/rat_deploy/RAT/2dea96fec20593566ab75692c9949596833adc',
-	appId:123456,
-	token:null,
-	debug: false,
-	secure: false,
+    baseAddress: 'http://annie.local/rat-project/RAT_Deploy/RAT/2dea96fec20593566ab75692c9949596833adc',
+    appId:123456,
+    token:null,
+    debug: false,
+    secure: false,
     loading: true,
     authenticated: 0,
     authorized: 0
