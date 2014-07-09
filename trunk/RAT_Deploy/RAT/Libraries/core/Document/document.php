@@ -71,7 +71,7 @@ class TDocument extends TObject
 	 *
 	 * @var    string
 	 */
-	public $_generator = 'Joomla! - Open Source Content Management';
+	public $_generator = 'RAT - System Resource Manager';
 
 	/**
 	 * Document modified date

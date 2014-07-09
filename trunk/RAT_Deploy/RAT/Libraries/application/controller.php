@@ -245,5 +245,22 @@ class TController
         													'controller'=> $this->name
                                                                                                         ) );
         }
+        /**
+         * Check token be send from Client side
+         * @param type $tokenClient
+         * @return boolean
+         */
+        public function  checkToken($tokenClient){
+            
+            $session = T::getSession();
+            
+            if(empty($tokenClient)) $tokenClient = TRequest::getVar('token');
+            
+            $tokenServer = $session->getToken();
+            
+            if($tokenServer == $tokenClient) return true;
+            
+            return false;
+        }
                 
 }

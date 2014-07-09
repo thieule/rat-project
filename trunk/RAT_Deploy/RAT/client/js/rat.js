@@ -8,7 +8,7 @@ var rat = {};
 
 // Global settings
 rat.global = {
-    baseAddress: 'http://annie.local/rat-project/RAT_Deploy/RAT/2dea96fec20593566ab75692c9949596833adc',
+    baseAddress: 'http://annie.local/rat-project/RAT_Deploy/RAT',
     appId:123456,
     token:null,
     debug: false,
@@ -33,6 +33,17 @@ rat.tokenStorage || (rat.tokenStorage = {
 		Cookies.expire('ua_session_token');
 	}
 });
+
+ // check login status
+   rat.isLogin = function() {
+                var token = rat.tokenStorage.get();
+                var user = rat.userStorage.get();
+                if(!user) return false;
+
+                user = JSON.parse(user);
+                if(token && user.id) return true;
+                return false;
+            };
 
 /**
  * Token user, default is in a cookie. The RAT integration will override this

@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="css/bootstrap.gantt.css">
+<link rel="stylesheet" href="css/gantt.css"/>
+<div>
+    <h1>Employer Project Booking</h1>
+
+    <form role="form" class="form-inline">
+        <div class="form-group">
+            <span class="help-block">Action</span>
+            <div class="btn-group">
+                <button class="btn btn-default" ng-click="addSamples()">Load data</button>
+                <button class="btn btn-default" ng-click="removeSomeSamples()">Remove some</button>
+                <button class="btn btn-default" ng-click="removeSamples()">Remove all</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="help-block">View scale</span>
+            <select class="form-control" style="width: 100px;" ng-model="scale" ng-options="s for s in ['hour', 'day', 'week', 'month']"></select>
+        </div>
+        <div class="form-group">
+            <span class="help-block">Sort order</span>
+            <select class="form-control" style="width: 100px;" ng-model="mode" ng-options="m for m in ['name', 'date', 'custom']"></select>
+        </div>
+        <div class="form-group text-center">
+            <span class="help-block">Max height</span>
+            <div ng-show="maxHeight > 0">
+                <button class="btn btn-default" ng-click="maxHeight = 0">Deactivate</button>
+            </div>
+            <div ng-show="maxHeight === 0">
+                <button class="btn btn-default" ng-click="maxHeight = 300">Activate</button>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <span class="help-block">Additional options</span>
+            <div class="btn-group">
+                <button ng-show="showWeekends" class="btn btn-default" ng-click="showWeekends = false">Hide weekends</button>
+                <button ng-show="showWeekends == false" class="btn btn-default" ng-click="showWeekends = true">Show weekends</button>
+                <button ng-show="showNonWorkHours == false" class="btn btn-default" ng-click="showNonWorkHours = true; subScale = 6">Show non working hours</button>
+                <button ng-show="showNonWorkHours" class="btn btn-default" ng-click="showNonWorkHours = false; subScale = 8">Hide non working hours</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <gantt first-day-of-week="1"
+           load-data="loadData = fn"
+           remove-data="removeData = fn"
+           clear-data="clearData = fn"
+           sort-mode="mode"
+           view-scale="scale"
+           column-width="scale === 'month' && 20 || (scale === 'week' && 10 || 4)"
+           column-sub-scale="scale === 'week' && 7 || 6"
+           show-non-work-hours="showNonWorkHours"
+           show-weekends="showWeekends"
+           max-height="maxHeight"
+           on-gantt-ready="addSamples()"
+           on-label-clicked="labelEvent(event)"
+           on-label-dbl-clicked="labelEvent(event)"
+           on-label-context-clicked="labelEvent(event)"
+           on-label-header-clicked="labelHeaderEvent(event)"
+           on-label-header-dbl-clicked="labelHeaderEvent(event)"
+           on-label-header-context-clicked="labelHeaderEvent(event)"
+           on-row-added="rowEvent(event)"
+           on-row-clicked="rowEvent(event)"
+           on-row-dbl-clicked="rowEvent(event)"
+           on-row-context-clicked="rowEvent(event)"
+           on-row-updated="rowEvent(event)"
+           on-scroll="scrollEvent(event)"
+           on-task-clicked="taskEvent(event)"
+           on-task-dbl-clicked="taskEvent(event)"
+           on-task-context-clicked="taskEvent(event)"
+           on-task-updated="taskEvent(event)">
+    </gantt>
+    <hr>
+    
+</div>
