@@ -201,30 +201,30 @@ class TApplication extends TObject
 	 */
 	public function Initialise($tokens=array())
 	{
-		$strQuery = TRequest::getVar('query');
+            $strQuery = TRequest::getVar('query');
                 
-        $params = explode('/', $strQuery);
+            $params = explode('/', $strQuery);
         
-        if(empty($tokens[$params[0]]))  texit('token invalid');
-			
-        $this->modulename = $tokens[$params[0]];
-                
-        $this->_router = TRouter::getInstance(array('module'=>$tokens[$params[0]])); 
-                
-        $this->_router->name = $tokens[$params[0]];
- 
-        $this->_router->strQuery = $strQuery;
-        
-        $this->_router->parse();
-        
-        
-        $this->_controller = TController::getInstance(
-        											$this->_router->params['controller'],
-        											array(
-        													'module'=> $this->modulename,
-        													'controller'=> $this->_router->params['controller'],
-        													'action'=> $this->_router->params['action']) );
-        
+            if(empty($tokens[$params[0]]))  texit('token invalid');
+
+            $this->modulename = $tokens[$params[0]];
+
+            $this->_router = TRouter::getInstance(array('module'=>$tokens[$params[0]])); 
+
+            $this->_router->name = $tokens[$params[0]];
+
+            $this->_router->strQuery = $strQuery;
+
+            $this->_router->parse();
+
+
+            $this->_controller = TController::getInstance(
+                                                                                                    $this->_router->params['controller'],
+                                                                                                    array(
+                                                                                                                    'module'=> $this->modulename,
+                                                                                                                    'controller'=> $this->_router->params['controller'],
+                                                                                                                    'action'=> $this->_router->params['action']) );
+
         
 	}
         
@@ -240,8 +240,8 @@ class TApplication extends TObject
 	
 	public function excude()
 	{
-		$actions = $this->_controller->getActions();
-                
+            
+		$actions = $this->_controller->getActions();     
 		$this->_controller->runAction($actions);
 	}
         

@@ -7,7 +7,10 @@
 
 class UserTController extends TController
 {
-    
+    /**
+     * Get list user
+     * return JSON file
+     */
     public function actionList(){
        
         $model = $this->getModel();
@@ -19,7 +22,10 @@ class UserTController extends TController
         
     }
     
-    
+    /**
+     * Add new user
+     * return JSON file
+     */
     public function actionAdd(){
         
          $model = $this->getModel();
@@ -33,7 +39,10 @@ class UserTController extends TController
                             'data'=>$list
                             ));
     }
-    
+    /**
+     * Login 
+     * return JSON file
+     */
     public function actionLogin(){
          $username = TRequest::getVar('login');
          $password = TRequest::getVar('password');
@@ -46,7 +55,10 @@ class UserTController extends TController
                             ));    
     }
     
-    
+    /**
+     * Get User by Id
+     * return JSON file
+     */
     public function actionUserget(){
          $userId = TRequest::getVar('user_id');
          $model = $this->getModel();
@@ -56,7 +68,10 @@ class UserTController extends TController
                             'user'=>$user
                             ));    
     }
-    
+    /**
+     * Logout action
+     * return JSON file
+     */
     public function actionLogout(){
          $userId = TRequest::getVar('user_id');
          
@@ -65,11 +80,29 @@ class UserTController extends TController
                             ));    
     }
     
-    
+    /**
+     * Heart Beat action
+     * To check heart of api
+     */
     public function actionHeartbeat()
     {
         $this->setView(array('alive'=>1));    
     }
+    
+     /**
+      * Export array to excel
+      * 
+      * @param type $data
+      * return csv file
+      */
+     public function actionExport()
+     {
+         $model = $this->getModel();
+         $list = $model->getList();
+         $this->blogic->exportExcelUserData($list);
+        
+     }
+    
  
     
 }

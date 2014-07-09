@@ -15,10 +15,16 @@ class UserTModel extends TModel
     
     public function getList(){
         
-        $this->_db->setQuery('select e.* from #__user as u 
-        									left join #__employer e on e.user_id = u.id');
+        $this->_db->setQuery('select e.* from #__importdata e'
+                . ' left join  #__user as u on e.user_id = u.id');
         $list = $this->_db->loadObjectList();
         return $list;
+    }
+    
+    public  function getDataExport()
+    {
+        $list = $this->getList();
+        
     }
     /**
      * Check login information

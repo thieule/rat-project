@@ -163,10 +163,69 @@
                 <!--/span-->
                 <div class="span9" id="content">
                      <div class="row-fluid">
+                                 <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">DropdownLable Form</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                     <form class="form-horizontal" id="dropdownlable-add-form"  ng-submit="drodownlableAdd()">
+                                      <fieldset>
+                                        <legend>Form Details</legend>
+                                        <div class="alert alert-error hide">
+								<button class="close" data-dismiss="alert"></button>
+								You have some form errors. Please check below.
+							</div>
+							<div class="alert alert-success hide">
+								<button class="close" data-dismiss="alert"></button>
+								Your form validation is successful!
+							</div>
+                                        <div class="control-group">
+                                          <label class="control-label" for="focusedInput">Code</label>
+                                          <div class="controls">
+                                            <input class="input-xlarge focused" name="code" id="focusedInput" type="text">
+                                            <span class="help-inline">The Code is auto generated. You can edit it</span>
+                                          </div>
+                                        </div>
+                                        
+                                        <div class="control-group">
+                                          <label class="control-label" for="focusedInput">Lable</label>
+                                          <div class="controls">
+                                            <input class="input-xlarge focused" name="lable" type="text">
+                                          </div>
+                                        </div>
+                                      
+                                        <div class="control-group">
+                                          <label class="control-label" for="selectError">Type</label>
+                                          <div class="controls">
+                                            <select id="selectError" name="dropdown_type">
+                                                <option value="None">None</option>
+                                              <option value="Position">Position</option>
+                                              <option value="Role">Role</option>
+                                              <option value="Project Type">Project Type</option>
+                                              <option value="Project Status">Project Status</option>
+                                            </select>
+                                            
+                                          </div>
+                                        </div>
+                                        <div  ng-hide="loading" class="form-actions">
+                                          <button type="submit" class="btn btn-primary">Save changes</button>
+                                          <button type="reset" class="btn">Cancel</button>
+                                        </div>
+                                         <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
+                                      </fieldset>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                        
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Employer listing <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p></div>
+                                <div class="muted pull-left">DropdownLable Listing <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -178,6 +237,7 @@
                                       <div class="btn-group pull-right">
                                          <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
                                          <ul class="dropdown-menu">
+                                             <li><a href="#">Import Data</a></li>
                                             <li><a href="#">Print</a></li>
                                             <li><a ng-click="ngGridPdfExportPlugin(gridOptions);">Save as PDF</a></li>
                                             <li><a href = "data:application/vnd.ms-excel" target="_blank" download="Export.csv" ng-click="userexportxlsx();">Export to Excel</a></li>
@@ -200,3 +260,12 @@
                 <p>&copy; RAT</p>
             </footer>
         </div>
+        <script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
+        <script src="js/helpers/form-validation.js"></script>
+        <script>
+
+	jQuery(document).ready(function() {   
+	   FormValidation.init();
+	});
+	
+        </script>

@@ -17,6 +17,7 @@ class UserTRouter extends TRouter
             'getuser'=>array('user','userget'),
            'logout'=>array('user','logout'),
           'heartbeat'=>array('user','heartbeat'),
+          'exportxslx'=>array('user','export')
         );
     }
     

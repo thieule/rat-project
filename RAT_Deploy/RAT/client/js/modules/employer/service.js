@@ -1,7 +1,6 @@
 'use strict';
 
-//   Authentication service
-ratApp.service('userSvc',
+ratApp.service('employerSvc',
     function() {
         // The service
         var service = {
